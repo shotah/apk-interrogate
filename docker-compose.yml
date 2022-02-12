@@ -1,0 +1,9 @@
+version: "3"
+services:
+  alpine:
+    image: ${IMAGE:-alpine}
+    volumes:
+      - ./data:/data
+    # command:
+    #   - bash rm /data/packages.csv
+    #   - bash -c "for package in $(apk info -q); do apk info -q -s $package | xargs | sed -e 's/ /, /g' >> /data/packages.csv; done"
