@@ -16,9 +16,12 @@ docker build -t $IMAGE .
 ```bash
 rm ./data/*
 mkdir -p data
-docker-compose down -v --remove-orphans
-docker-compose up --force-recreate -V
-docker run -it --name alpine -v ./data:/data alpine
+
+# docker-compose down -v --remove-orphans
+# docker-compose up --force-recreate -V
+# docker run -it --name alpine -v ./data:/data alpine
+
+docker compose run alpine
 ```
 
 ### Connecting and Outputting Packages:
@@ -31,6 +34,7 @@ for package in $(apk info); do apk info -s $package | xargs | sed -e 's/ /, /g' 
 ### Docker Clean up
 
 ```bash
+docker-compose down -v --remove-orphans
 docker image prune -f
 docker volume prune -f
 ```
